@@ -16,7 +16,7 @@
       font-size: 1.9rem;
       font-weight: bold;
       letter-spacing: 4px;
-      font-family: 'tall', sans-serif;
+      font-family: var(--tall-font);
       a{
         text-decoration: none;
         color:var(--white);
@@ -41,7 +41,7 @@
           padding: 0 10px;
           transition: .3s;
           font-size: 36px;
-          font-family: "chalk", serif;
+          font-family: var(--chalk-font);
           &::before{
             content: '';
             bottom: -5px;

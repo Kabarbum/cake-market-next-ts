@@ -18,7 +18,6 @@ const Contacts = () => {
                         <div className={cls.contactsBody}>
                             <span>
                                 <h3>С радостью отвечу тебе в соц.&nbsp;сетях</h3>
-                                <p>Отвечаю в инстаграме в течение суток</p>
                             </span>
                             <div className={cls.contactsSocials}>
                                 <ul>

@@ -4,10 +4,8 @@ import Image from 'next/image'
 import vk from "@/assets/img/vk.png"
 import inst from "@/assets/img/instagram.png"
 import {useRouter} from "next/router";
-import MyMenu from "@/components/UI/Menu/MyMenu";
+import MyMenu from "@/components/UI/MyMenu/MyMenu";
 import {useState} from "react";
-// import {useDispatch, useSelector} from "react-redux";
-// import {setMenuVisibleAction} from "../store/reducers/menu";
 
 const links = [
     {id:0, route:'/',title:'Каталог'},
@@ -43,7 +41,7 @@ const Navbar = () => {
                     {/*}*/}
 
                     <li className={cls.socials}>
-                        <a href="https://vk.com/karamel_zlat">
+                        <a href="https://vk.com/vkysnotort_spb">
                             <Image src={vk} alt="vk"/>
                         </a>
 

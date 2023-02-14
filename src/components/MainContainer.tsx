@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import {FC, ReactNode} from "react";
 import Footer from "@/components/Footer";
+import Image from 'next/image'
+import background from '@/assets/img/image.jpg'
+
 
 interface MainContainerProps {
     children: ReactNode
@@ -22,6 +25,19 @@ const MainContainer:FC<MainContainerProps> = ({children}) => {
                     {children}
                 </main>
                 <Footer/>
+                <div className="bodyWrap">
+                    <Image
+                        alt="background"
+                        src={background}
+                        placeholder="blur"
+                        quality={100}
+                        fill
+                        sizes="100vw"
+                        style={{
+                            objectFit: 'cover',
+                        }}
+                    />
+                </div>
             </div>
         </>
     );

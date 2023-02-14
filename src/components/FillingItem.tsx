@@ -1,10 +1,10 @@
-import { fillingItem } from '@/types';
+import { IFilling } from '@/types';
 import {FC} from 'react';
 import Image from "next/image";
 import cls from "@/styles/Fillings.module.scss"
 
 interface FillingItemProps {
-    fillingItem: fillingItem
+    fillingItem: IFilling
 }
 
 const FillingItem:FC<FillingItemProps> = ({fillingItem}) => {
@@ -12,9 +12,11 @@ const FillingItem:FC<FillingItemProps> = ({fillingItem}) => {
         <div className={cls.fillings__item}>
             <div className={cls.fillings__itemImg}>
                 <Image
-                    src={fillingItem.imgUrl}
                     alt="FillingImg"
+                    src={fillingItem.imgUrl}
                     fill
+                    priority={true}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className={cls.wave}/>
             </div>
