@@ -14,7 +14,7 @@ const MainContainer:FC<MainContainerProps> = ({children}) => {
     return (
         <>
             <Head>
-                <title>Cake Market</title>
+                <title>Торты Питер на заказ</title>
                 <meta name="description" content="Торты на заказ по вашим пожеланиям в Питере!
                   Чизкейки, трайфлы, бенто и капкейки с любимой начинкой.
                   Украсьте праздничный стол на День рождения, свадьбу и любой другой праздник." key="desc" />
