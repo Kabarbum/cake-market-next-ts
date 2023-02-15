@@ -1,14 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {useRouter} from "next/router";
 import AdminProducts from "@/components/admin/AdminProducts";
 import MainContainer from "@/components/MainContainer";
 import AdminCategories from "@/components/admin/AdminCategories";
 import AdminFillings from "@/components/admin/AdminFillings";
+import {fetchProducts} from "@/firebase/requests/products";
+import {fetchCategories} from "@/firebase/requests/categories";
+import {ICategory, IProduct} from "@/types";
+import {useActions} from "@/hooks/useActions";
 
-const Admin = () => {
+interface AdminProps {
+    products: IProduct[]
+    categories: ICategory[]
+}
+const Admin:FC<AdminProps> = ({products, categories}) => {
     const isAuth = useTypedSelector(state => state.admin.isAuth)
+    const {setProducts, setCategories, setLastVisible, setProductsExists} = useActions()
     const router = useRouter()
+    const [page, setPage] = useState(0)
     useEffect(() => {
         if(router.isReady && !isAuth)
             router.push("/Auth")
@@ -16,8 +26,12 @@ const Admin = () => {
     if (!isAuth) {
         return <div>hui</div>
     }
-    const [page, setPage] = useState(0)
-
+    useEffect(() => {
+        setCategories(categories)
+        setProducts(products)
+        setLastVisible(products.at(-1)?.id)
+        setProductsExists(true)
+    })
     return (
         <MainContainer>
             <div className="container admin-container">
@@ -64,3 +78,11 @@ const Admin = () => {
 };
 
 export default Admin;
+
+export const getServerSideProps = async () => {
+    const products = await fetchProducts(0)
+    const categories = await fetchCategories()
+    return {
+        props: {products, categories},
+    }
+}

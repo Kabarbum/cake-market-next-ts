@@ -26,7 +26,7 @@ const Home: FC<HomeProps> = ({products, categories}) => {
         return () => {
             setLastVisible('0')
         }
-    }, [])
+    })
 
     return (
         <MainContainer>

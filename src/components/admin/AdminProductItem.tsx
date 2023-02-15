@@ -3,6 +3,7 @@ import {deleteProduct} from "@/firebase/requests/products";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {IProduct} from "@/types";
 import cls from "@/styles/Home.module.scss";
+import Image from "next/image";
 
 interface ProductItemProps {
     product: IProduct
@@ -17,13 +18,13 @@ const ProductItem: FC<ProductItemProps> = ({product, setItem}) => {
     const deleteHandle = () => {
         const res = window.confirm("Удалить?")
         if(res) {
-            deleteProduct(product.id, product.imgUrl)
+            deleteProduct(product.id, product.imgUrl.toString())
         }
     }
     return (
         <div className={cls.productsItem}>
             <div className={cls.productsItem__img}>
-                <img src={product.imgUrl} alt="img"/>
+                <Image src={product.imgUrl.toString()} alt="img" width={250} height={330}/>
             </div>
             <div className={cls.productsItem__content}>
                 <h3>{product.title}</h3>

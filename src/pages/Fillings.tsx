@@ -16,7 +16,7 @@ const Fillings: FC<FillingsProps> = ({fillings}) => {
         setFillingsLoading(true)
         setFillings(fillings)
         setFillingsLoading(false)
-    }, [])
+    })
 
     return (
         <MainContainer>

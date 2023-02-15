@@ -61,7 +61,7 @@ const AdminFillings = () => {
         // @ts-ignore
         const value = categories.at(-1).id + 1
         setCategoryProperty({property: 'id', value})
-    }, [])
+    })
 
     return (
         <div className={cls.categoriesContent}>

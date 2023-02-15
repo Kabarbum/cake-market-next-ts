@@ -1,7 +1,7 @@
 import cls from "./MyMenu.module.scss"
 import Link from "next/link";
 import {FC} from "react";
-// import {useSelector} from "react-redux";
+import {useTypedSelector} from "@/hooks/useTypedSelector";
 
 type MyMenuProps = {
     isMenuVisible: boolean
@@ -9,7 +9,7 @@ type MyMenuProps = {
 }
 
 const MyMenu:FC<MyMenuProps> = ({isMenuVisible, setMenuVisible}) => {
-    // const isAuth = false//useSelector(state=>state.admin.isAuth)
+    const isAuth = useTypedSelector(state=>state.admin.isAuth)
     const menuHandler = () => {
         setMenuVisible(false)
     }
@@ -21,7 +21,7 @@ const MyMenu:FC<MyMenuProps> = ({isMenuVisible, setMenuVisible}) => {
                         <li><Link href="/">Каталог</Link></li>
                         <li><Link href={"/Fillings"}>Начинки</Link></li>
                         <li><Link href={"/Contacts"}>Контакты</Link></li>
-                        {/*{isAuth && <li><Link href="/Admin">Админка</Link></li>}*/}
+                        {isAuth && <li><Link href={"/Admin"}>Админка</Link></li>}
 
                         <li><a href="https://vk.com/vkysnotort_spb">Вконтакте</a></li>
                         <li><a href="https://www.instagram.com/e.a.cherem/">Инстаграм</a></li>

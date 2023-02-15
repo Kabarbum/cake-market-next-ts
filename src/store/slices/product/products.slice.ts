@@ -20,7 +20,7 @@ const initialState: IInitialState = {
     categories: [],
     selectedCategoryId: 0,
     selectedSort: ["id", "asc"],
-    limit: 6,
+    limit: 12,
     lastVisible: "0",
     isProductPreLoading: false,
     isProductLoading: false,

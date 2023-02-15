@@ -13,7 +13,7 @@ export function addFilling(filling: IFilling) {
         },
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                filling = {...filling, imgUrl: downloadURL}
+                filling = {...filling, imgUrl: <Blob><unknown>downloadURL}
                 const fillingsRef = collection(firestore, "fillings");
                 await setDoc(doc(fillingsRef, filling.id.toString()), {
                     id: filling.id,
@@ -38,6 +38,7 @@ export const fetchFillings = async () => {
 
 export const updateFilling = async (filling: IFilling, prevFillingUrl: string) => {
     const fillingRef = doc(firestore, "fillings", filling.id.toString());
+    // @ts-ignore
     if (prevFillingUrl !== filling.imgUrl) {
         const fillingImgRef = ref(storage, `fillings/filling_img_${filling.id}`)
 

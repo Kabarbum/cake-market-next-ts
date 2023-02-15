@@ -9,7 +9,6 @@ function Categories() {
 
     const categories = useTypedSelector(state => state.products.categories)
     const selectedCategoryId = useTypedSelector(state => state.products.selectedCategoryId)
-    const limit = useTypedSelector(state => state.products.limit)
 
     const router = useRouter();
     const dispatch = useTypedDispatch()
@@ -18,7 +17,7 @@ function Categories() {
         await router.replace({
             query: {...router.query, category: categoryId},
         });
-        dispatch(getProducts({limit, selectedCategoryId: categoryId}))
+        dispatch(getProducts())
     }
 
     return (

@@ -9,8 +9,8 @@ const Footer = () => {
         <>
             <footer>
                 ©2023-{(new Date()).getFullYear()} Все права защищены
-                <span onClick={clickHandler}>,</span>
-                'торты Питер на заказ'
+                <span onClick={clickHandler}>, </span>
+                <span>&apos;торты Питер на заказ&apos;</span>
             </footer>
             <style jsx>
                 {`

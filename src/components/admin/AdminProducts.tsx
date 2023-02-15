@@ -6,22 +6,20 @@ import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {IProduct} from "@/types";
 import cls from "@/styles/Home.module.scss"
 import {useActions} from "@/hooks/useActions";
-import {fetchProducts} from "@/firebase/requests/products";
-import {fetchCategories} from "@/firebase/requests/categories";
 import {getMoreProducts} from "@/store/slices/product/asyncActions";
 import {useTypedDispatch} from "@/hooks/useTypedDispatch";
 
 const AdminProducts = () => {
-    const {setProduct, setProductChanging, setProductsExists, setPrevProductUrl,setProducts,setCategories} = useActions()
+    const {
+        setProduct,
+        setProductChanging,
+        setPrevProductUrl,
+    } = useActions()
     const dispatch = useTypedDispatch()
     const products = useTypedSelector(state => state.products.products)
     const isProductLoading = useTypedSelector(state => state.products.isProductLoading)
     const isProductPreLoading = useTypedSelector(state => state.products.isProductPreLoading)
     const isProductsExists = useTypedSelector(state => state.products.isProductsExists)
-        //for fetch more
-    const selectedSort = useTypedSelector(state => state.products.selectedSort)
-    const limit = useTypedSelector(state => state.products.limit)
-    const lastVisible = useTypedSelector(state => state.products.lastVisible)
 
     const observer = useRef<IntersectionObserver | null>(null)
     const lastElem = useRef<any>(null)
@@ -31,7 +29,7 @@ const AdminProducts = () => {
         if (observer.current) observer.current.disconnect()
         const callback = async function (entries: any) {
             if (entries[0].isIntersecting && !isProductLoading) {
-                dispatch(getMoreProducts({selectedCategoryId: 0, selectedSort, limit, lastVisible, isProductsExists}))
+                dispatch(getMoreProducts())
             }
         }
         observer.current = new IntersectionObserver(callback)
@@ -46,17 +44,6 @@ const AdminProducts = () => {
         setPrevProductUrl(product.imgUrl)
     }
 
-    useEffect(() => {
-        setProductsExists(true)
-        async function fetchData(){
-            const products = await fetchProducts(0)
-            setProducts(products)
-            const categories = await fetchCategories()
-            setCategories(categories)
-        }
-        fetchData()
-    }, [])
-
     return (
         <div>
             <AdminProductsForm/>
@@ -65,9 +52,9 @@ const AdminProducts = () => {
                     : <div className={cls.products}>
                         {products.map(product =>
                             <AdminProductItem
+                                key={product.id}
                                 product={product}
                                 setItem={setItem}
-                                key={product.id}
                             />
                         )}
                         <div ref={lastElem} style={{width: "100vw", height: 2}}/>

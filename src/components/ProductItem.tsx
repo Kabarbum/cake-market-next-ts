@@ -24,14 +24,14 @@ const ProductItem: FC<ProductItemProps> = ({product}) => {
                 <LazyLoadImage
                     alt="cake"
                     effect="blur"
-                    src={product.imgUrl}
+                    src={product.imgUrl.toString()}
                 />
             </div>
             <div className={isOpen ? `${cls.img__blurContainer} ${cls.active}` : cls.img__blurContainer}>
                 <div onClick={e => closeHandler(e.target)}>
                     <Image
                         className={cls.img__blur}
-                        src={product.imgUrl}
+                        src={product.imgUrl.toString()}
                         alt="img"
                         fill
                         sizes="(max-width: 1200px) 50vw, 33vw"

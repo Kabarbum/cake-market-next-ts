@@ -26,7 +26,7 @@ export function AddProduct(product: IProduct) {
         },
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                product = {...product, imgUrl: downloadURL}
+                product = {...product, imgUrl: <Blob><unknown>downloadURL}
                 const productsRef = collection(firestore, "products");
                 await setDoc(doc(productsRef, `product_${product.id}`), {
                     id: product.id,
@@ -81,6 +81,7 @@ export const fetchMoreProducts = async (categoryId: number, order: [string, Orde
 }
 export const updateProduct = async (product: IProduct, prevProductUrl: string) => {
     const productRef = doc(firestore, "products", "product_" + product.id);
+    // @ts-ignore
     if (prevProductUrl !== product.imgUrl) {
         const productImgRef = ref(storage, `products/product_img_${product.id}`)
 

@@ -13,7 +13,7 @@ const FillingItem:FC<FillingItemProps> = ({fillingItem}) => {
             <div className={cls.fillings__itemImg}>
                 <Image
                     alt="FillingImg"
-                    src={fillingItem.imgUrl}
+                    src={fillingItem.imgUrl.toString()}
                     fill
                     priority={true}
                     sizes="(max-width: 768px) 100vw, 50vw"

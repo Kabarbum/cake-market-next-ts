@@ -1,35 +1,39 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {fetchMoreProducts, fetchProducts} from "@/firebase/requests/products";
 import {setLastVisible, setProductLoading, setProductPreLoading, setProductsExists} from "@/store/slices/product/products.slice";
-import {IFetchModeProducts, IFetchProducts} from "@/types";
 
 export const getProducts = createAsyncThunk(
     'product/getProducts',
-    async ({selectedCategoryId, limit}:IFetchProducts, {dispatch}) => {
+    async (_, {getState, dispatch}) => {
+        const {products} = getState() as any
+        const {selectedCategoryId, limit} = products
         dispatch(setProductPreLoading(true))
 
-        const products = await fetchProducts(selectedCategoryId, limit)
-
+        const newProducts = await fetchProducts(selectedCategoryId, limit)
         dispatch(setProductsExists(true))
-        dispatch(setLastVisible(products[products.length - 1].id))
+        dispatch(setLastVisible(newProducts[newProducts.length - 1].id))
         dispatch(setProductPreLoading(false))
 
-        return products
+        return newProducts
     }
 )
 export const getMoreProducts = createAsyncThunk(
     'product/getMoreProducts',
-    async ({selectedCategoryId, selectedSort, limit, lastVisible, isProductsExists}:IFetchModeProducts, {dispatch}) => {
+    async (_, {dispatch, getState}) => {
+        const {products} = getState() as any
+        const {selectedCategoryId, selectedSort, limit, lastVisible, isProductsExists} = products
+
         if (!isProductsExists) return
         dispatch(setProductLoading(true))
-        const products = await fetchMoreProducts(selectedCategoryId, selectedSort, limit, lastVisible)
-        if (products.length === 0) {
+        const fetchedProducts = await fetchMoreProducts(selectedCategoryId, selectedSort, limit, lastVisible)
+        if (fetchedProducts.length === 0) {
             dispatch(setProductLoading(false))
             dispatch(setProductsExists(false))
             return null
         }
-        dispatch(setLastVisible(products[products.length - 1].id))
+        // @ts-ignore
+        dispatch(setLastVisible(fetchedProducts.at(-1).id))
         dispatch(setProductLoading(false))
-        return products
+        return fetchedProducts
     }
 )

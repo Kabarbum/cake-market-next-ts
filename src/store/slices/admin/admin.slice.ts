@@ -23,7 +23,7 @@ const initialState: IInitialState = {
         price: 0,
         weight: 0,
         categoryId: 1,
-        imgUrl: "https://placehold.co/600"
+        imgUrl: <Blob><unknown>"https://placehold.co/600"
     },
     prevProductUrl: "",
     isProductChanging: false,
@@ -32,7 +32,7 @@ const initialState: IInitialState = {
         title: "",
         composition: [""],
         price: 0,
-        imgUrl: "https://placehold.co/600"
+        imgUrl: <Blob><unknown>"https://placehold.co/600"
     },
     prevFillingUrl: "",
     isFillingChanging: false,
@@ -60,7 +60,7 @@ export const adminSlice = createSlice({
         setProductDefault: (state) => {
             state.product = {
                 id: uuidv4(), title: "", description: "", price: 0,
-                weight: 0, categoryId: 1, imgUrl: "https://placehold.co/600"
+                weight: 0, categoryId: 1, imgUrl: <Blob><unknown>"https://placehold.co/600"
             }
         },
         setProductProperty: (state, dispatch) => {
@@ -79,7 +79,7 @@ export const adminSlice = createSlice({
         setFillingDefault: (state) => {
             state.filling = {
                 id: uuidv4(), title: "", composition: [""], price: 0,
-                imgUrl: "https://placehold.co/600"
+                imgUrl: <Blob><unknown>"https://placehold.co/600"
             }
         },
         setFillingProperty: (state, dispatch) => {

@@ -28,7 +28,7 @@ const AdminProductsForm = () => {
     const setPrice = (value: number) => {
         setFillingProperty({property: 'price', value})
     }
-    const setUrl = (value: string) => {
+    const setUrl = (value: any) => {
         if (value !== undefined)
             setFillingProperty({property: 'imgUrl', value})
     }
@@ -131,7 +131,7 @@ const AdminProductsForm = () => {
                 <input
                     className={cls.productFormLeft__item}
                     type="file"
-                    onChange={e => setUrl(e.target.files[0])}
+                    onChange={e => setUrl(e.target.files && e.target.files[0])}
                 />
                 <div className={cls.productFormError}>{error}</div>
                 <div className={cls.productForBtns}>
@@ -147,7 +147,7 @@ const AdminProductsForm = () => {
             </div>
             <div className={cls.productFormRight}>
                 <div className={cls.productFormRight__img}>
-                    <img src={isValidHttpUrl(filling.imgUrl) ? filling.imgUrl : URL.createObjectURL(filling.imgUrl)}
+                    <img src={isValidHttpUrl(filling.imgUrl.toString()) ? filling.imgUrl.toString() : URL.createObjectURL(filling.imgUrl)}
                          alt="img"/>
                 </div>
             </div>

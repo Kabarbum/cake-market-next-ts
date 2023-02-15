@@ -15,13 +15,13 @@ const FillingItem: FC<FillingItemProps> = ({filling, setItem}) => {
     const deleteHandle = () => {
         const res = window.confirm("Удалить?")
         if(res) {
-            deleteFilling(filling.id, filling.imgUrl)
+            deleteFilling(filling.id, filling.imgUrl.toString())
         }
     }
     return (
         <div className={cls.fillings__item}>
             <div className={cls.fillings__itemImg}>
-                <img src={filling.imgUrl} alt="img"/>
+                <img src={filling.imgUrl.toString()} alt="img"/>
                 <div className={cls.wave}/>
             </div>
             <div className={cls.fillings__itemContent}>

@@ -151,7 +151,7 @@ const AdminProductsForm = () => {
             </div>
             <div className={cls.productFormRight}>
                 <div className={cls.productFormRight__img}>
-                    <img src={isValidHttpUrl(product.imgUrl) ? product.imgUrl : URL.createObjectURL(product.imgUrl)}
+                    <img src={isValidHttpUrl(product.imgUrl.toString()) ? product.imgUrl.toString() : URL.createObjectURL(product.imgUrl)}
                          alt="img"/>
                 </div>
             </div>
