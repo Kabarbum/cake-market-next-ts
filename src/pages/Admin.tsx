@@ -23,15 +23,15 @@ const Admin:FC<AdminProps> = ({products, categories}) => {
         if(router.isReady && !isAuth)
             router.push("/Auth")
     }, [router.isReady])
-    if (!isAuth) {
-        return <div>hui</div>
-    }
     useEffect(() => {
         setCategories(categories)
         setProducts(products)
         setLastVisible(products.at(-1)?.id)
         setProductsExists(true)
     })
+    if (!isAuth) {
+        return <div>hui</div>
+    }
     return (
         <MainContainer>
             <div className="container admin-container">

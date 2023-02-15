@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Image from "next/image";
 import {AddProduct, updateProduct} from "@/firebase/requests/products";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import cls from '@/styles/Admin.productFrom.module.scss'
@@ -151,8 +152,11 @@ const AdminProductsForm = () => {
             </div>
             <div className={cls.productFormRight}>
                 <div className={cls.productFormRight__img}>
-                    <img src={isValidHttpUrl(product.imgUrl.toString()) ? product.imgUrl.toString() : URL.createObjectURL(product.imgUrl)}
-                         alt="img"/>
+                    <Image src={isValidHttpUrl(product.imgUrl.toString()) ? product.imgUrl.toString() : URL.createObjectURL(product.imgUrl)}
+                         alt="img"
+                         width={600}
+                         height={600}
+                    />
                 </div>
             </div>
         </form>

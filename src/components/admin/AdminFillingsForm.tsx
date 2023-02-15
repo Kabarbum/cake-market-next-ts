@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import Image from "next/image";
 import {addFilling, updateFilling} from "@/firebase/requests/fillings";
 import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {useActions} from "@/hooks/useActions";
@@ -76,7 +77,7 @@ const AdminProductsForm = () => {
         setFillingChanging(false)
 
         const downloadURL = await updateFilling(filling, prevFillingUrl)
-        if(downloadURL)
+        if (downloadURL)
             setFillingProperty({property: 'imgUrl', downloadURL})
         setFillingDefault()
         setError("")
@@ -111,7 +112,7 @@ const AdminProductsForm = () => {
                                 type="text"
                                 placeholder="Ингридиент..."
                                 value={el}
-                                onChange={e => setCompositionItem({id:idx, value:e.target.value})}
+                                onChange={e => setCompositionItem({id: idx, value: e.target.value})}
                             />
                             <h4 onClick={() => deleteHandler(idx)}>X</h4>
                         </li>
@@ -147,8 +148,12 @@ const AdminProductsForm = () => {
             </div>
             <div className={cls.productFormRight}>
                 <div className={cls.productFormRight__img}>
-                    <img src={isValidHttpUrl(filling.imgUrl.toString()) ? filling.imgUrl.toString() : URL.createObjectURL(filling.imgUrl)}
-                         alt="img"/>
+                    <Image
+                        src={isValidHttpUrl(filling.imgUrl.toString()) ? filling.imgUrl.toString() : URL.createObjectURL(filling.imgUrl)}
+                        alt="img"
+                        width={600}
+                        height={600}
+                    />
                 </div>
             </div>
         </form>

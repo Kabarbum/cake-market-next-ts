@@ -1,27 +1,28 @@
 import {FC} from 'react';
+import Image from "next/image";
 import {deleteFilling} from "@/firebase/requests/fillings";
 import {IFilling} from "@/types";
 import cls from "@/styles/Fillings.module.scss"
 
-interface FillingItemProps{
+interface FillingItemProps {
     filling: IFilling
-    setItem: (product:IFilling) => void
+    setItem: (product: IFilling) => void
 }
 
 const FillingItem: FC<FillingItemProps> = ({filling, setItem}) => {
-    const handleChange = ()=>{
+    const handleChange = () => {
         setItem(filling)
     }
     const deleteHandle = () => {
         const res = window.confirm("Удалить?")
-        if(res) {
+        if (res) {
             deleteFilling(filling.id, filling.imgUrl.toString())
         }
     }
     return (
         <div className={cls.fillings__item}>
             <div className={cls.fillings__itemImg}>
-                <img src={filling.imgUrl.toString()} alt="img"/>
+                <Image src={filling.imgUrl.toString()} alt="img" width={380} height={500}/>
                 <div className={cls.wave}/>
             </div>
             <div className={cls.fillings__itemContent}>
