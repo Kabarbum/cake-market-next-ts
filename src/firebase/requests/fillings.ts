@@ -1,9 +1,7 @@
 import {deleteObject, getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
 import {firestore, storage} from "../index";
 import {collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc} from "firebase/firestore";
-import {setFillingUrlAction} from "@/store/slices/admin/admin";
 import {IFilling} from "@/types";
-import {TypeDispatch} from "@/store";
 
 export function addFilling(filling: IFilling) {
     const fillingImgRef = ref(storage, `fillings/filling_img_${filling.id}`)
@@ -38,7 +36,7 @@ export const fetchFillings = async () => {
     return arr
 }
 
-export const updateFilling = async (filling: IFilling, prevFillingUrl: string, dispatch: TypeDispatch) => {
+export const updateFilling = async (filling: IFilling, prevFillingUrl: string) => {
     const fillingRef = doc(firestore, "fillings", filling.id.toString());
     if (prevFillingUrl !== filling.imgUrl) {
         const fillingImgRef = ref(storage, `fillings/filling_img_${filling.id}`)
@@ -52,8 +50,8 @@ export const updateFilling = async (filling: IFilling, prevFillingUrl: string, d
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(async downloadURL => {
-                    dispatch(setFillingUrlAction(downloadURL))
                     await updateDoc(fillingRef, {imgUrl: downloadURL});
+                    return downloadURL
                 });
             }
         );
@@ -64,8 +62,9 @@ export const updateFilling = async (filling: IFilling, prevFillingUrl: string, d
         composition: filling.composition,
         price: filling.price,
     });
+    return false
 }
-export const deleteFilling = async (id: Number, Url: string) => {
+export const deleteFilling = async (id: string, Url: string) => {
     const url = (new URL(Url)).pathname.split("%2F")
     const newUrl = url[url.length - 1]
 

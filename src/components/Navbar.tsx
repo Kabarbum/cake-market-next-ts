@@ -6,6 +6,7 @@ import inst from "@/assets/img/instagram.png"
 import {useRouter} from "next/router";
 import MyMenu from "@/components/UI/MyMenu/MyMenu";
 import {useState} from "react";
+import {useTypedSelector} from "@/hooks/useTypedSelector";
 
 const links = [
     {id:0, route:'/',title:'Каталог'},
@@ -15,7 +16,7 @@ const links = [
 
 const Navbar = () => {
     const [isMenuVisible, setIsMenuVisible] = useState(false)
-    // const isAuth = false//useSelector(state=>state.admin.isAuth)
+    const isAuth = useTypedSelector(state=>state.admin.isAuth)
     const router = useRouter()
 
     return (
@@ -34,11 +35,11 @@ const Navbar = () => {
                         </li>
                     )}
 
-                    {/*{isAuth &&*/}
-                    {/*    <li className={cls.navItem}>*/}
-                    {/*        <Link href="Admin">Д</Link>*/}
-                    {/*    </li>*/}
-                    {/*}*/}
+                    {isAuth &&
+                        <li className={cls.navItem}>
+                            <Link href={"/Admin"}>Д</Link>
+                        </li>
+                    }
 
                     <li className={cls.socials}>
                         <a href="https://vk.com/vkysnotort_spb">

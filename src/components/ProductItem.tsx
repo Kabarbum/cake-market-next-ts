@@ -20,9 +20,7 @@ const ProductItem: FC<ProductItemProps> = ({product}) => {
     }
     return (
         <div className={cls.productsItem}>
-            <div className={cls.productsItem__img}
-                 onClick={openHandler}
-            >
+            <div className={cls.productsItem__img} onClick={openHandler}>
                 <LazyLoadImage
                     alt="cake"
                     effect="blur"

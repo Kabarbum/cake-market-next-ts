@@ -1,15 +1,15 @@
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit"
-import {firebaseReducer, getFirebase} from 'react-redux-firebase'
+import {firebaseReducer} from 'react-redux-firebase'
 import {firestoreReducer} from 'redux-firestore'
-import logger from "redux-logger"
 import {fillingReducer} from "./slices/filling/filling.slice";
 import {productReducer} from "@/store/slices/product/products.slice";
+import {adminReducer} from "@/store/slices/admin/admin.slice";
 
 const rootReducer = combineReducers({
     products: productReducer,
     fillings: fillingReducer,
-    // admin: adminReducer,
+    admin: adminReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer
 })

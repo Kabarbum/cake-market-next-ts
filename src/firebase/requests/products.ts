@@ -12,16 +12,15 @@ import {
     updateDoc,
     where
 } from "firebase/firestore";
-import {setProductUrlAction} from "@/store/slices/admin/admin";
 import {IProduct} from "@/types";
-import {TypeDispatch} from "@/store";
 import {OrderByDirection} from "@firebase/firestore-types";
 
 export function AddProduct(product: IProduct) {
     const productImgRef = ref(storage, `products/product_img_${product.id}`)
     const uploadTask = uploadBytesResumable(productImgRef, <Blob><unknown>product.imgUrl)
     uploadTask.on('state_changed',
-        () => {},
+        () => {
+        },
         (error) => {
             console.log("Upload image error: ", error)
         },
@@ -42,6 +41,7 @@ export function AddProduct(product: IProduct) {
         }
     );
 }
+
 export const fetchProducts = async (categoryId = 0, lmt = 6) => {
 
     const q = categoryId === 0
@@ -79,7 +79,7 @@ export const fetchMoreProducts = async (categoryId: number, order: [string, Orde
     querySnapshot.forEach(doc => products.push(<IProduct>doc.data()));
     return products
 }
-export const updateProduct = async (product: IProduct, prevProductUrl: string, dispatch: TypeDispatch) => {
+export const updateProduct = async (product: IProduct, prevProductUrl: string) => {
     const productRef = doc(firestore, "products", "product_" + product.id);
     if (prevProductUrl !== product.imgUrl) {
         const productImgRef = ref(storage, `products/product_img_${product.id}`)
@@ -87,20 +87,22 @@ export const updateProduct = async (product: IProduct, prevProductUrl: string, d
         const uploadTask = uploadBytesResumable(productImgRef, <Blob><unknown>product.imgUrl)
 
         uploadTask.on('state_changed',
-            () => {},
+            () => {
+            },
             (error) => {
                 console.log("Upload image error: ", error)
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                    dispatch(setProductUrlAction(downloadURL))
                     await updateDoc(productRef, {...product, imgUrl: downloadURL});
+                    return downloadURL
                 });
             }
         );
     } else {
         await updateDoc(productRef, product);
     }
+    return false
 }
 export const deleteProduct = async (id: string, Url: string) => {
     const urlArr = (new URL(Url)).pathname.split("%2F")

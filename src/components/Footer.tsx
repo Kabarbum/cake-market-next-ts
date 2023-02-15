@@ -1,9 +1,9 @@
-// import {useNavigate} from "react-router-dom";
+import {useRouter} from "next/router";
 
 const Footer = () => {
-    // const navigate = useNavigate()
+    const router = useRouter()
     const clickHandler = () => {
-        // navigate('/auth')
+        router.push('/Auth')
     }
     return (
         <>

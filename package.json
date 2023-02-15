@@ -32,6 +32,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
     "@types/react-lazy-load-image-component": "^1.5.2",
-    "@types/redux-logger": "^3.0.9"
+    "@types/redux-logger": "^3.0.9",
+    "@types/uuid": "^9.0.0"
   }
 }
