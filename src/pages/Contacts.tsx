@@ -17,7 +17,7 @@ const Contacts = () => {
                     <div className="container">
                         <div className={cls.contactsBody}>
                             <span>
-                                <h3>С радостью отвечу тебе в соц.&nbsp;сетях</h3>
+                                <h3>С радостью отвечу тебе в&nbsp;соц.&nbsp;сетях</h3>
                             </span>
                             <div className={cls.contactsSocials}>
                                 <ul>

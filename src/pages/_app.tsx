@@ -6,6 +6,7 @@ import {firestore} from "@/firebase";
 import {createFirestoreInstance} from "redux-firestore";
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import localFont from '@next/font/local'
+import { Analytics } from '@vercel/analytics/react';
 
 
 const fontChalk = localFont({src: '../assets/fonts/chalk.ttf'})
@@ -32,6 +33,7 @@ export default function App({Component, pageProps}: AppProps) {
               }
             `}</style>
             <Component {...pageProps} />
+            <Analytics />
         </ReactReduxFirebaseProvider>
     </Provider>
 }
