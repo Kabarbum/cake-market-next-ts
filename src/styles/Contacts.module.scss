@@ -14,6 +14,7 @@
             }
             .contactsSocials{
                 width: 400px;
+                max-width: calc(100vw - 32px);
                 margin: 30px auto;
                 padding: 10px;
                 display: flex;
