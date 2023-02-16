@@ -1,1 +1,1 @@
-Vercel link: https://cake-market-next-ts-42e4.vercel.app/
+Vercel link: https://cake-market-kabarbum.vercel.app/
