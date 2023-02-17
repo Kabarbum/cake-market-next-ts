@@ -30,7 +30,7 @@ const MainContainer:FC<MainContainerProps> = ({children}) => {
                 <meta property="og:url" content="vkysnotort.spb.ru"/>
                 <meta property="og:description" content="Торты на заказ по вашим пожеланиям в Питере!
                   Чизкейки, трайфлы, бенто и капкейки с любимой начинкой."/>
-                <meta property="og:image" content={cart}/>
+                <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/cake-market-859d1.appspot.com/o/cart.jpg?alt=media&token=049adf3f-4eb0-4e31-8776-f4732a1708a1"/>
                 <meta property="og:image:width" content="1200"/>
                 <meta property="og:image:height" content="1200"/>
             </Head>
