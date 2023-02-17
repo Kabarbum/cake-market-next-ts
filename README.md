@@ -1,1 +1,1 @@
-Vercel link: https://cake-market-kabarbum.vercel.app/
+link: https://vkysnotort.spb.ru
