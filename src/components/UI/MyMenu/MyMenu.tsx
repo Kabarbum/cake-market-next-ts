@@ -24,7 +24,7 @@ const MyMenu:FC<MyMenuProps> = ({isMenuVisible, setMenuVisible}) => {
                         {isAuth && <li><Link href={"/Admin"}>Админка</Link></li>}
 
                         <li><a href="https://vk.com/e.a.cherem">Вконтакте</a></li>
-                        <li><a href="https://www.instagram.com/e.a.cherem/">Инстаграм</a></li>
+                        <li><a href="https://tlgg.ru/RinaYa">Телеграм</a></li>
                     </ul>
                 </div>
             }

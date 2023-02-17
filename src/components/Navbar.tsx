@@ -46,8 +46,8 @@ const Navbar = () => {
                             <Image src={vk} alt="vk"/>
                         </a>
 
-                        <a href="https://www.instagram.com/e.a.cherem/">
-                            <Image src={inst} alt="instagram"/>
+                        <a href="https://tlgg.ru/RinaYa">
+                            <Image src={inst} alt="telegram"/>
                         </a>
                     </li>
                 </ul>

@@ -1,6 +1,6 @@
 import MainContainer from "@/components/MainContainer";
 import {useState} from "react";
-import Inst from "@/assets/img/contact-inst.png";
+import Tg from "@/assets/img/telegram.png";
 import VK from "@/assets/img/contact-vk.png";
 import WhatsUp from "@/assets/img/contact-whatsapp.png";
 import beater from "@/assets/img/venchik.png"
@@ -22,9 +22,9 @@ const Contacts = () => {
                             <div className={cls.contactsSocials}>
                                 <ul>
                                     <li>
-                                        <a href="https://www.instagram.com/e.a.cherem/">
+                                        <a href="https://tlgg.ru/RinaYa">
                                             <div className={cls.socialsImg}>
-                                                <Image src={Inst} alt="Inst"/>
+                                                <Image src={Tg} alt="telegram"/>
                                             </div>
                                             <span>e.a.cherem</span>
                                         </a>
