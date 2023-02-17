@@ -4,7 +4,6 @@ import {FC, ReactNode} from "react";
 import Footer from "@/components/Footer";
 import Image from 'next/image'
 import background from '@/assets/img/image.jpg'
-import cart from '@/assets/img/cart.jpg'
 
 
 interface MainContainerProps {

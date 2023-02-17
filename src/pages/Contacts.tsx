@@ -30,11 +30,11 @@ const Contacts = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://vk.com/vkysnotort_spb">
+                                        <a href="https://vk.com/e.a.cherem">
                                             <div className={cls.socialsImg}>
                                                 <Image src={VK} alt="Vk"/>
                                             </div>
-                                            <span>vkysnotort_spb</span>
+                                            <span>e.a.cherem</span>
                                         </a>
                                     </li>
                                     <li>

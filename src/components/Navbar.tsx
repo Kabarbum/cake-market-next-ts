@@ -42,7 +42,7 @@ const Navbar = () => {
                     }
 
                     <li className={cls.socials}>
-                        <a href="https://vk.com/vkysnotort_spb">
+                        <a href="https://vk.com/e.a.cherem">
                             <Image src={vk} alt="vk"/>
                         </a>
 
