@@ -13,7 +13,7 @@
                 font-size: 2rem;
             }
             .contactsSocials{
-                width: 400px;
+                width: 380px;
                 max-width: calc(100vw - 32px);
                 margin: 30px auto;
                 padding: 10px;
@@ -21,6 +21,8 @@
                 justify-content: center;
                 transform: rotate(-4deg);
                 border: 1px solid var(--orange);
+
+                //border-radius: 5px;
 
                 ul{
                     width: 300px;

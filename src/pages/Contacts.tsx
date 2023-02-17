@@ -47,9 +47,9 @@ const Contacts = () => {
                                     </li>
                                 </ul>
 
-                                <div className={cls.beater}>
-                                    <Image src={beater} alt="beater"/>
-                                </div>
+                                {/*<div className={cls.beater}>*/}
+                                {/*    <Image src={beater} alt="beater"/>*/}
+                                {/*</div>*/}
                             </div>
                             {
                                 isLoading==="0" && <Loader/>
